@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://pvzlitslice001"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+
+[sub_resource type="Environment" id="Environment_bloom"]
+background_mode = 3
+glow_enabled = true
+glow_levels/1 = false
+glow_levels/2 = true
+glow_levels/3 = true
+glow_levels/4 = true
+glow_levels/5 = true
+glow_intensity = 0.55
+glow_strength = 0.9
+glow_bloom = 0.35
+glow_hdr_threshold = 0.85
+tonemap_mode = 3
+tonemap_exposure = 1.05
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bloom")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.28, 0.32, 0.42, 1)
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="LawnBG" type="Sprite2D" parent="World"]
+z_index = -10
+centered = false
+texture_filter = 0
+
+[node name="Ground" type="Node2D" parent="World"]
+z_index = 0
+
+[node name="Lights" type="Node2D" parent="World"]
+
+[node name="SunDir" type="DirectionalLight2D" parent="World/Lights"]
+color = Color(1, 0.82, 0.55, 1)
+energy = 1.35
+height = 0.55
+shadow_enabled = true
+shadow_color = Color(0.02, 0.03, 0.08, 0.85)
+shadow_filter = 2
+shadow_filter_smooth = 1.85
+max_distance = 2200.0
+height = 0.72
+
+[node name="Entities" type="Node2D" parent="World"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Label" parent="UI"]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 900.0
+offset_bottom = 48.0
+theme_override_colors/font_color = Color(1, 0.95, 0.7, 1)
+theme_override_font_sizes/font_size = 22
+text = "SUN 150"
+
+[node name="Hint" type="Label" parent="UI"]
+offset_left = 16.0
+offset_top = 680.0
+offset_right = 1260.0
+offset_bottom = 712.0
+theme_override_colors/font_color = Color(0.75, 0.85, 1, 0.85)
+theme_override_font_sizes/font_size = 16
+text = "Original dusk lawn — walk/shoot motion, god rays, lantern pools. No PopCap assets."

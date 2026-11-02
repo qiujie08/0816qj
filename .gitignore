@@ -1,0 +1,5 @@
+# Local engine binary (download Godot 4.3 separately)
+/tools/
+
+# Godot import/cache
+**/.godot/
